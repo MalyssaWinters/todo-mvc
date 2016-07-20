@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+.row .btn{
+    background-color: #5cd1c3;
+    border: 2px dotted #ffffff;
+}
+.jumbotron{
+    background-color: #5cd1c3;
+    border: 3px dotted #ffffff;
+}
