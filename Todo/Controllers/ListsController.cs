@@ -20,6 +20,32 @@ namespace Todo.Controllers
             return View(db.Lists.ToList());
         }
 
+        public ActionResult ToggleDone(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Item item = db.Items.Find(id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (item.IsDone)
+            {
+                item.IsDone = false;
+            }
+            else
+            {
+                item.IsDone = true;
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = item.ListID });
+        }
+
         public ActionResult AllDone(int ? id)
         {
             if (id == null)
@@ -91,6 +117,7 @@ namespace Todo.Controllers
             }
             return View(list);
         }
+
 
         // POST: Lists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
