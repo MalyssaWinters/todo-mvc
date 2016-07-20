@@ -56,9 +56,9 @@
             @Html.DisplayFor(modelItem => item.Details)
         </td>
         <td>
-            @Html.ActionLink(" ", "Edit", new { id = item.ItemID }, new { @class = "glyphicon glyphicon-pencil", title = "Edit" })
-            @Html.ActionLink(" ", "Details", new { id = item.ItemID }, new { @class = "glyphicon glyphicon-search", title = "Details" })
-            @Html.ActionLink(" ", "Delete", new { id = item.ItemID }, new { @class = "glyphicon glyphicon-trash", title = "Delete" })
+            <a href = "@Url.Action("Edit", new { id = item.ItemID })" title = "Edit"><span class="glyphicon glyphicon-pencil"></span></a> |
+            <a href = "@Url.Action("Details", new { id = item.ItemID })" title = "Details"><span class="glyphicon glyphicon-search"></span></a> |
+            <a href = "@Url.Action("Delete", new { id = item.ItemID })" title = "Delete"><span class="glyphicon glyphicon-trash"></span></a>
         </td>
     </tr>
 }

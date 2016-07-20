@@ -20,6 +20,24 @@ namespace Todo.Controllers
             return View(db.Lists.ToList());
         }
 
+        public ActionResult AllDone(int ? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            List list = db.Lists.Find(id);
+
+            foreach (var n in list.Items)
+            {
+                n.IsDone = true;
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = list.ListID });
+        }
+
         // GET: Lists/Details/5
         public ActionResult Details(int? id)
         {
